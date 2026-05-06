@@ -393,7 +393,7 @@ const Portfolio = () => {
         {/* Background Branded Watermark */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-10">
           <img
-            src="./assets/azad_image.png"
+            src="/assets/azad_image.png"
             alt=""
             className="w-full h-full object-cover grayscale blur-[2px] scale-110"
           />
@@ -404,7 +404,7 @@ const Portfolio = () => {
         <div className="md:hidden flex items-center justify-between p-6 bg-white/40 backdrop-blur-lg border-b border-white">
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 rounded-full border border-white/50 overflow-hidden shadow-sm">
-              <img src="./assets/azad_image.png" alt="Azad" className="w-full h-full object-cover" />
+              <img src="/assets/azad_image.png" alt="Azad" className="w-full h-full object-cover" />
             </div>
             <span className="font-black text-xl tracking-tighter">Azad</span>
           </div>
@@ -416,7 +416,7 @@ const Portfolio = () => {
           <div className="flex flex-col items-center mb-4">
             <div className="w-24 h-24 rounded-full border-4 border-white/30 overflow-hidden mb-2 bg-white/20">
               <img
-                src="./assets/azad_image.png"
+                src="/assets/azad_image.png"
                 alt="Azad"
                 className="w-full h-full object-cover"
                 onError={(e) => { e.target.src = "https://ui-avatars.com/api/?name=Azad&background=random"; }}
@@ -493,7 +493,7 @@ const Portfolio = () => {
                     <p className="text-[7px] md:text-[9px] font-bold text-[#64748b] uppercase tracking-widest mt-0.5">Years</p>
                   </div>
                   <div className="p-2 md:p-4 bg-slate-50/50 rounded-[16px] md:rounded-[24px] border border-white">
-                    <p className="text-lg md:text-xl font-black text-[#0f172a]">10+</p>
+                    <p className="text-lg md:text-xl font-black text-[#0f172a]">4+</p>
                     <p className="text-[7px] md:text-[9px] font-bold text-[#64748b] uppercase tracking-widest mt-0.5">Projects</p>
                   </div>
                   <div className="p-2 md:p-4 bg-slate-50/50 rounded-[16px] md:rounded-[24px] border border-white">
@@ -521,7 +521,7 @@ const Portfolio = () => {
                 <div className="w-32 h-32 md:w-44 md:h-44 rounded-full border-4 border-[#2563eb] p-2 relative group">
                   <div className="w-full h-full rounded-full bg-white overflow-hidden shadow-xl">
                     <img
-                      src="./assets/azad_image.png"
+                      src="/assets/azad_image.png"
                       alt="Azad Profile"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       onError={(e) => { e.target.src = "https://ui-avatars.com/api/?name=Azad&background=2563eb&color=fff"; }}
@@ -538,9 +538,9 @@ const Portfolio = () => {
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  <StatCard icon="./assets/project.png" value="4" label="Live Projects" />
+                  <StatCard icon="/assets/project.png" value="4" label="Live Projects" />
                   <StatCard icon="https://img.icons8.com/fluency/96/stopwatch.png" value="1.5" label="Years Experience" decimals={1} />
-                  <StatCard icon="./assets/Countries_Served.png" value="3" label="Countries Served" />
+                  <StatCard icon="/assets/Countries_Served.png" value="3" label="Countries Served" />
                 </div>
               </div>
             </div>
@@ -628,9 +628,9 @@ const Portfolio = () => {
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {["B.Tech Degree", "12th Certificate", "10th Certificate"].map((title, i) => {
                 const certImages = {
-                  "B.Tech Degree": "./assets/btech.png",
-                  "12th Certificate": "./assets/12th_class.png",
-                  "10th Certificate": "./assets/10th_class.png",
+                  "B.Tech Degree": "/assets/btech.png",
+                  "12th Certificate": "/assets/12th_class.png",
+                  "10th Certificate": "/assets/10th_class.png",
                 };
                 const hasImage = certImages[title];
 
@@ -672,7 +672,7 @@ const Portfolio = () => {
                 school="RD Engineering College, AKTU University"
                 year="2021–2025"
                 score="65%"
-                icon="./assets/btech.png"
+                icon="/assets/btech.png"
                 theme="pastel-blue"
               />
               <EducationCard
@@ -680,7 +680,7 @@ const Portfolio = () => {
                 school="Ch. Chhabil Dass Public School"
                 year="2020–2021"
                 score="75%"
-                icon="./assets/12th_class.png"
+                icon="/assets/12th_class.png"
                 theme="pastel-peach"
               />
               <EducationCard
@@ -688,7 +688,7 @@ const Portfolio = () => {
                 school="Spring Dale School"
                 year="2018–2019"
                 score="75%"
-                icon="./assets/10th_class.png"
+                icon="/assets/10th_class.png"
                 theme="pastel-green"
               />
             </div>
