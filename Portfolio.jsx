@@ -6,30 +6,8 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
  * useInView Hook
  * Detects when an element enters the viewport using IntersectionObserver
  */
-const useInView = (options) => {
-  const [isInView, setIsInView] = useState(false);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsInView(true);
-        if (options?.triggerOnce) observer.unobserve(entry.target);
-      } else if (!options?.triggerOnce) {
-        setIsInView(false);
-      }
-    }, options);
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) observer.unobserve(ref.current);
-    };
-  }, [options]);
-
-  return [ref, isInView];
+const useInView = () => {
+  return [useRef(null), true];
 };
 
 /**
@@ -195,15 +173,8 @@ const ParticleCanvas = () => {
  * Handles the scroll fade-up animation
  */
 const Section = ({ children, id, className = "" }) => {
-  const [ref, isInView] = useInView({ threshold: 0.1, triggerOnce: true });
-
   return (
-    <section
-      id={id}
-      ref={ref}
-      className={`transition-all duration-1000 ease-out transform ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        } ${className}`}
-    >
+    <section id={id} className={`opacity-100 translate-y-0 ${className}`}>
       {children}
     </section>
   );
@@ -389,7 +360,7 @@ const Portfolio = () => {
         }
       `}</style>
 
-      <div className="glass-dashboard h-full w-full max-w-[1600px] mx-auto flex flex-col md:flex-row overflow-hidden border border-white relative z-10">
+      <div className="glass-dashboard h-full w-full max-w-[1800px] mx-auto flex flex-col md:flex-row overflow-hidden border border-white relative z-10">
         {/* Background Branded Watermark */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-10">
           <img
@@ -464,7 +435,7 @@ const Portfolio = () => {
         <main
           ref={mainRef}
           onScroll={handleMainScroll}
-          className="flex-grow p-6 md:p-12 overflow-y-auto overflow-x-hidden h-full pb-32 md:pb-12 custom-scrollbar"
+          className="flex-grow p-4 md:p-8 overflow-y-auto overflow-x-hidden h-full pb-32 md:pb-12 custom-scrollbar"
         >
 
           {/* --- SECTION 2: HERO --- */}
@@ -515,7 +486,7 @@ const Portfolio = () => {
           </section>
 
           {/* --- SECTION 3: ABOUT --- */}
-          <Section id="about" className="py-4 max-w-7xl mx-auto px-4">
+          <Section id="about" className="py-4 max-w-[1400px] mx-auto px-2">
             <div className="grid md:grid-cols-12 gap-6 items-center">
               <div className="md:col-span-4 flex justify-center">
                 <div className="w-32 h-32 md:w-44 md:h-44 rounded-full border-4 border-[#2563eb] p-2 relative group">
@@ -561,7 +532,7 @@ const Portfolio = () => {
           </Section>
 
           {/* --- SECTION 5: EXPERIENCE --- */}
-          <Section id="experience" className="py-8 max-w-5xl mx-auto px-4">
+          <Section id="experience" className="py-8 max-w-[1200px] mx-auto px-2">
             <h2 className="text-3xl md:text-5xl font-bold mb-6 shimmer-text">Work Experience</h2>
 
             <div>
@@ -590,7 +561,7 @@ const Portfolio = () => {
           </Section>
 
           {/* --- SECTION 6: PROJECTS --- */}
-          <Section id="projects" className="py-8 max-w-7xl mx-auto px-4">
+          <Section id="projects" className="py-8 max-w-[1400px] mx-auto px-2">
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-center shimmer-text">Featured Projects</h2>
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -622,7 +593,7 @@ const Portfolio = () => {
           </Section>
 
           {/* --- SECTION 7: CERTIFICATES --- */}
-          <Section id="certificates" className="py-8 max-w-7xl mx-auto px-4">
+          <Section id="certificates" className="py-8 max-w-[1400px] mx-auto px-2">
             <h2 className="text-3xl md:text-5xl font-bold mb-6 shimmer-text">Certificates & Degrees</h2>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -695,7 +666,7 @@ const Portfolio = () => {
           </Section>
 
           {/* --- SECTION 9: CONTACT --- */}
-          <Section id="contact" className="py-8 max-w-7xl mx-auto px-4">
+          <Section id="contact" className="py-8 max-w-[1400px] mx-auto px-2">
             <h2 className="text-4xl md:text-6xl font-black mb-6 text-center text-[#0f172a] tracking-tighter">GET IN TOUCH</h2>
 
             <div className="grid lg:grid-cols-2 gap-8 items-stretch max-w-6xl mx-auto">
@@ -860,11 +831,8 @@ const Portfolio = () => {
 // --- HELPER COMPONENTS ---
 
 const StatCard = ({ icon, value, label, decimals = 0 }) => {
-  const [ref, isInView] = useInView({ threshold: 0.1, triggerOnce: true });
-  const count = useCounter(value, 2000, isInView);
-
   return (
-    <div ref={ref} className="glass-card p-6 text-center transform hover:scale-105 transition-transform">
+    <div className="glass-card p-6 text-center transform hover:scale-105 transition-transform opacity-100">
       <div className="w-20 h-20 mx-auto mb-4 bg-white rounded-3xl flex items-center justify-center p-2 shadow-sm border border-white overflow-hidden">
         <img
           src={icon}
@@ -877,7 +845,7 @@ const StatCard = ({ icon, value, label, decimals = 0 }) => {
         />
       </div>
       <div className="text-3xl font-bold text-[#0f172a] mb-1">
-        {decimals > 0 ? count.toFixed(decimals) : count}+
+        {decimals > 0 ? Number(value).toFixed(decimals) : value}+
       </div>
       <div className="text-[#64748b] text-[10px] uppercase font-black tracking-widest leading-tight">{label}</div>
     </div>
@@ -885,10 +853,9 @@ const StatCard = ({ icon, value, label, decimals = 0 }) => {
 };
 
 const SkillCard = ({ icon, title, skills, percent, theme = "glass-card" }) => {
-  const [ref, isInView] = useInView({ threshold: 0.1, triggerOnce: true });
 
   return (
-    <div ref={ref} className={`${theme} glass-card p-10 group transition-all`}>
+    <div className={`${theme} glass-card p-10 group transition-all opacity-100 translate-y-0`}>
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center space-x-4">
           <div className="w-14 h-14 bg-white/80 rounded-2xl flex items-center justify-center p-3 shadow-sm group-hover:scale-110 transition-transform duration-500">
@@ -920,7 +887,7 @@ const SkillCard = ({ icon, title, skills, percent, theme = "glass-card" }) => {
         <div className="relative h-3 w-full bg-white/30 rounded-full overflow-hidden p-0.5 border border-white">
           <div
             className="skill-bar-fill"
-            style={{ width: isInView ? `${percent}%` : '0%' }}
+            style={{ width: `${percent}%` }}
           />
         </div>
       </div>
@@ -991,13 +958,10 @@ const ProjectCard = ({ name, desc, tech, link }) => {
 };
 
 const EducationCard = ({ title, school, year, score, icon, theme = "glass-card" }) => {
-  const [ref, isInView] = useInView({ threshold: 0.1, triggerOnce: true });
 
   return (
     <div
-      ref={ref}
-      className={`${theme} glass-card p-6 md:p-8 flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 transition-all duration-1000 transform relative overflow-hidden ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
-        }`}
+      className={`${theme} glass-card p-6 md:p-8 flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 transition-all duration-1000 transform relative overflow-hidden opacity-100 translate-x-0`}
     >
       <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-white shrink-0 overflow-hidden p-1">
         {icon.includes('.') ? (
