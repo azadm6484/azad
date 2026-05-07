@@ -293,7 +293,7 @@ const Portfolio = () => {
   }, []);
 
   return (
-    <div className="bg-[#cbd5e1] text-[#0f172a] font-sans selection:bg-[#2dd4bf]/20 overflow-x-hidden h-screen w-screen p-0">
+    <div className="bg-[#cbd5e1] text-[#0f172a] font-sans selection:bg-[#2dd4bf]/20 overflow-x-hidden h-[100dvh] w-full p-0 flex flex-col">
       {/* Global CSS Injected via Style Tag */}
       <style>{`
         @keyframes float {
@@ -389,7 +389,7 @@ const Portfolio = () => {
         }
       `}</style>
 
-      <div className="glass-dashboard h-full w-full max-w-[1600px] mx-auto flex flex-col md:flex-row overflow-hidden border border-white relative">
+      <div className="glass-dashboard h-full w-full max-w-[1600px] mx-auto flex flex-col md:flex-row overflow-hidden border border-white relative z-10">
         {/* Background Branded Watermark */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-10">
           <img
@@ -568,7 +568,7 @@ const Portfolio = () => {
               <div className="glass-card p-6 md:p-8 relative">
                 <h3 className="text-2xl font-bold text-[#0f172a]">Full Stack Developer</h3>
                 <p className="text-[#2dd4bf] font-semibold mb-2">Morpheme Webnexus Pvt Ltd</p>
-                <p className="text-[#64748b] text-sm mb-4 uppercase tracking-widest">Nov 2023 – May 7, 2026 | Greater Noida, India</p>
+                <p className="text-[#64748b] text-sm mb-4 uppercase tracking-widest">Dec 2024 – May 7, 2026 | Greater Noida, India</p>
 
                 <ul className="space-y-3">
                   {[
@@ -793,65 +793,66 @@ const Portfolio = () => {
           </footer>
         </main>
 
-        {/* Mobile Bottom Navigation */}
-        <nav className="md:hidden fixed bottom-6 left-6 right-6 h-20 bg-white/60 backdrop-blur-2xl rounded-[32px] z-50 flex items-center justify-around px-4 border border-white/50 shadow-2xl">
-          {[
-            { id: 'hero', teal: 'https://img.icons8.com/ios-filled/100/0d9488/home.png', black: 'https://img.icons8.com/ios-filled/100/000000/home.png', label: 'Home' },
-            { id: 'skills', teal: 'https://img.icons8.com/ios-filled/100/0d9488/brain.png', black: 'https://img.icons8.com/ios-filled/100/000000/brain.png', label: 'Skills' },
-            { id: 'experience', teal: 'https://img.icons8.com/ios-filled/100/0d9488/stopwatch.png', black: 'https://img.icons8.com/ios-filled/100/000000/stopwatch.png', label: 'Experience' },
-            { id: 'projects', teal: 'https://img.icons8.com/ios-filled/100/0d9488/opened-folder.png', black: 'https://img.icons8.com/ios-filled/100/000000/opened-folder.png', label: 'Projects' },
-            { id: 'contact', teal: 'https://img.icons8.com/ios-filled/100/0d9488/new-post.png', black: 'https://img.icons8.com/ios-filled/100/000000/new-post.png', label: 'Contact' }
-          ].map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              onClick={() => setActiveSection(item.id)}
-              className="w-14 h-14 flex items-center justify-center rounded-2xl transition-all duration-300"
-            >
-              <div className={`w-10 h-10 flex items-center justify-center rounded-xl transition-all duration-300 ${activeSection === item.id ? 'bg-white/20 shadow-sm border border-white/30' : ''}`}>
-                <img
-                  src={activeSection === item.id ? item.teal : item.black}
-                  className={`w-6 h-6 object-contain transition-all duration-300 ${activeSection === item.id ? '' : 'opacity-60'}`}
-                  alt={item.id}
-                />
-              </div>
-            </a>
-          ))}
-        </nav>
+      </div>
 
-        {/* Global Lightbox Viewer */}
-        {lightbox && (
-          <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:p-12">
-            <div
-              className="absolute inset-0 bg-white/40 backdrop-blur-[100px] transition-all duration-500"
-              onClick={() => setLightbox(null)}
-            />
-            <div className="relative w-full max-w-6xl max-h-screen overflow-y-auto no-scrollbar animate-[scale_0.4s_cubic-bezier(0.175,0.885,0.32,1.275)] z-[1010]">
-              <div className="fixed top-8 right-8 z-[1100]">
-                <button
-                  onClick={() => setLightbox(null)}
-                  className="w-16 h-16 bg-white/20 backdrop-blur-2xl text-[#0f172a] border border-white/30 rounded-full flex items-center justify-center hover:bg-red-500 hover:text-white transition-all shadow-2xl group"
-                >
-                  <span className="text-3xl font-light transform group-hover:rotate-90 transition-transform duration-300">✕</span>
-                </button>
-              </div>
-              <div className="w-full flex justify-center py-20 px-4">
-                {lightbox.img ? (
-                  <img
-                    src={lightbox.img}
-                    alt={lightbox.title}
-                    className="w-full h-auto rounded-[32px] shadow-[0_40px_100px_rgba(0,0,0,0.2)] border-8 border-white/50"
-                  />
-                ) : (
-                  <div className="w-full max-w-2xl aspect-video bg-white/20 backdrop-blur-md border-4 border-dashed border-white/40 rounded-[60px] flex items-center justify-center text-2xl font-black text-[#64748b] tracking-tighter">
-                    [ NO_ASSET_FOUND ]
-                  </div>
-                )}
-              </div>
+      {/* Mobile Bottom Navigation */}
+      <nav className="md:hidden fixed bottom-6 left-6 right-6 h-20 bg-white/70 backdrop-blur-3xl rounded-[32px] z-[100] flex items-center justify-around px-4 border border-white/50 shadow-2xl">
+        {[
+          { id: 'hero', teal: 'https://img.icons8.com/ios-filled/100/0d9488/home.png', black: 'https://img.icons8.com/ios-filled/100/000000/home.png', label: 'Home' },
+          { id: 'skills', teal: 'https://img.icons8.com/ios-filled/100/0d9488/brain.png', black: 'https://img.icons8.com/ios-filled/100/000000/brain.png', label: 'Skills' },
+          { id: 'experience', teal: 'https://img.icons8.com/ios-filled/100/0d9488/stopwatch.png', black: 'https://img.icons8.com/ios-filled/100/000000/stopwatch.png', label: 'Experience' },
+          { id: 'projects', teal: 'https://img.icons8.com/ios-filled/100/0d9488/opened-folder.png', black: 'https://img.icons8.com/ios-filled/100/000000/opened-folder.png', label: 'Projects' },
+          { id: 'contact', teal: 'https://img.icons8.com/ios-filled/100/0d9488/new-post.png', black: 'https://img.icons8.com/ios-filled/100/000000/new-post.png', label: 'Contact' }
+        ].map((item) => (
+          <a
+            key={item.id}
+            href={`#${item.id}`}
+            onClick={() => setActiveSection(item.id)}
+            className="w-14 h-14 flex items-center justify-center rounded-2xl transition-all duration-300"
+          >
+            <div className={`w-10 h-10 flex items-center justify-center rounded-xl transition-all duration-300 ${activeSection === item.id ? 'bg-white/20 shadow-sm border border-white/30' : ''}`}>
+              <img
+                src={activeSection === item.id ? item.teal : item.black}
+                className={`w-6 h-6 object-contain transition-all duration-300 ${activeSection === item.id ? '' : 'opacity-60'}`}
+                alt={item.id}
+              />
+            </div>
+          </a>
+        ))}
+      </nav>
+
+      {/* Global Lightbox Viewer */}
+      {lightbox && (
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:p-12">
+          <div
+            className="absolute inset-0 bg-white/40 backdrop-blur-[100px] transition-all duration-500"
+            onClick={() => setLightbox(null)}
+          />
+          <div className="relative w-full max-w-6xl max-h-screen overflow-y-auto no-scrollbar animate-[scale_0.4s_cubic-bezier(0.175,0.885,0.32,1.275)] z-[1010]">
+            <div className="fixed top-8 right-8 z-[1100]">
+              <button
+                onClick={() => setLightbox(null)}
+                className="w-16 h-16 bg-white/20 backdrop-blur-2xl text-[#0f172a] border border-white/30 rounded-full flex items-center justify-center hover:bg-red-500 hover:text-white transition-all shadow-2xl group"
+              >
+                <span className="text-3xl font-light transform group-hover:rotate-90 transition-transform duration-300">✕</span>
+              </button>
+            </div>
+            <div className="w-full flex justify-center py-20 px-4">
+              {lightbox.img ? (
+                <img
+                  src={lightbox.img}
+                  alt={lightbox.title}
+                  className="w-full h-auto rounded-[32px] shadow-[0_40px_100px_rgba(0,0,0,0.2)] border-8 border-white/50"
+                />
+              ) : (
+                <div className="w-full max-w-2xl aspect-video bg-white/20 backdrop-blur-md border-4 border-dashed border-white/40 rounded-[60px] flex items-center justify-center text-2xl font-black text-[#64748b] tracking-tighter">
+                  [ NO_ASSET_FOUND ]
+                </div>
+              )}
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
