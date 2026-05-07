@@ -360,7 +360,7 @@ const Portfolio = () => {
         }
       `}</style>
 
-      <div className="glass-dashboard h-full w-full max-w-[1800px] mx-auto flex flex-col md:flex-row overflow-hidden border border-white relative z-10">
+      <div className="glass-dashboard h-full w-full max-w-[1800px] mx-auto flex flex-col md:flex-row overflow-hidden md:border border-white relative z-10">
         {/* Background Branded Watermark */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-10">
           <img
@@ -372,7 +372,7 @@ const Portfolio = () => {
         </div>
 
         {/* Mobile Header */}
-        <div className="md:hidden flex items-center justify-between p-6 bg-white/40 backdrop-blur-lg border-b border-white">
+        <div className="md:hidden flex items-center justify-between p-4 bg-white/40 backdrop-blur-lg border-b border-white">
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 rounded-full border border-white/50 overflow-hidden shadow-sm">
               <img src="/assets/azad_image.png" alt="Azad" className="w-full h-full object-cover" />
@@ -435,11 +435,11 @@ const Portfolio = () => {
         <main
           ref={mainRef}
           onScroll={handleMainScroll}
-          className="flex-grow p-4 md:p-8 overflow-y-auto overflow-x-hidden h-full pb-32 md:pb-12 custom-scrollbar"
+          className="flex-grow p-2 md:p-8 overflow-y-auto overflow-x-hidden h-full pb-32 md:pb-12 custom-scrollbar"
         >
 
           {/* --- SECTION 2: HERO --- */}
-          <section id="hero" className="relative min-h-[250px] md:min-h-[350px] flex items-center justify-center mb-6">
+          <section id="hero" className="relative min-h-[250px] md:min-h-[350px] flex items-center justify-center mb-6 px-4">
             <div className="glass-card p-4 md:p-8 w-full max-w-4xl relative overflow-hidden group">
               <div className="absolute -top-24 -right-24 w-64 h-64 bg-teal-100 rounded-full blur-3xl opacity-50 group-hover:opacity-80 transition-opacity" />
               <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-peach-100 rounded-full blur-3xl opacity-50 group-hover:opacity-80 transition-opacity" />
@@ -486,7 +486,7 @@ const Portfolio = () => {
           </section>
 
           {/* --- SECTION 3: ABOUT --- */}
-          <Section id="about" className="py-4 max-w-[1400px] mx-auto px-2">
+          <Section id="about" className="py-4 max-w-[1400px] mx-auto px-0 md:px-2">
             <div className="grid md:grid-cols-12 gap-6 items-center">
               <div className="md:col-span-4 flex justify-center">
                 <div className="w-32 h-32 md:w-44 md:h-44 rounded-full border-4 border-[#2563eb] p-2 relative group">
@@ -502,13 +502,13 @@ const Portfolio = () => {
                 </div>
               </div>
 
-              <div className="md:col-span-8">
+              <div className="md:col-span-8 px-4">
                 <h2 className="text-3xl md:text-5xl font-bold mb-6 shimmer-text">About Me</h2>
                 <p className="text-[#64748b] text-base md:text-lg leading-relaxed mb-8">
                   I'm a Full Stack Developer with 1.5+ years of experience at Morpheme Webnexus Pvt Ltd, where I built and shipped 4 live production applications for clients in India, Australia, and the US. I specialise in React.js, Node.js, PostgreSQL, and automation workflows using n8n. I'm passionate about building robust, scalable solutions that solve real-world problems. B.Tech graduate in AI & ML from AKTU University.
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 px-0">
                   <StatCard icon="/assets/project.png" value="4" label="Live Projects" />
                   <StatCard icon="https://img.icons8.com/fluency/96/stopwatch.png" value="1.5" label="Years Experience" decimals={1} />
                   <StatCard icon="/assets/Countries_Served.png" value="3" label="Countries Served" />
@@ -518,10 +518,10 @@ const Portfolio = () => {
           </Section>
 
           {/* --- SECTION 4: SKILLS --- */}
-          <Section id="skills" className="py-4">
+          <Section id="skills" className="py-4 px-4">
             <h2 className="text-4xl md:text-6xl font-black mb-4 text-[#0f172a] tracking-tighter text-center">CORE SKILLS</h2>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 px-0">
               <SkillCard icon="react" title="Frontend" skills={["React.js", "Redux", "JS", "HTML", "CSS"]} percent={90} theme="pastel-peach" />
               <SkillCard icon="https://img.icons8.com/fluency/96/artificial-intelligence.png" title="AI Dev" skills={["Cursor", "GitHub Copilot", "Lovable", "ChatGPT"]} percent={92} theme="pastel-blue" />
               <SkillCard icon="nodedotjs" title="Backend" skills={["Node.js", "Express", "Python", "Flask", "Auth"]} percent={85} theme="pastel-green" />
@@ -532,7 +532,7 @@ const Portfolio = () => {
           </Section>
 
           {/* --- SECTION 5: EXPERIENCE --- */}
-          <Section id="experience" className="py-8 max-w-[1200px] mx-auto px-2">
+          <Section id="experience" className="py-8 max-w-[1200px] mx-auto px-4">
             <h2 className="text-3xl md:text-5xl font-bold mb-6 shimmer-text">Work Experience</h2>
 
             <div>
@@ -561,7 +561,7 @@ const Portfolio = () => {
           </Section>
 
           {/* --- SECTION 6: PROJECTS --- */}
-          <Section id="projects" className="py-8 max-w-[1400px] mx-auto px-2">
+          <Section id="projects" className="py-8 max-w-[1400px] mx-auto px-4">
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-center shimmer-text">Featured Projects</h2>
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -593,7 +593,7 @@ const Portfolio = () => {
           </Section>
 
           {/* --- SECTION 7: CERTIFICATES --- */}
-          <Section id="certificates" className="py-8 max-w-[1400px] mx-auto px-2">
+          <Section id="certificates" className="py-8 max-w-[1400px] mx-auto px-4">
             <h2 className="text-3xl md:text-5xl font-bold mb-6 shimmer-text">Certificates & Degrees</h2>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -666,13 +666,17 @@ const Portfolio = () => {
           </Section>
 
           {/* --- SECTION 9: CONTACT --- */}
-          <Section id="contact" className="py-8 max-w-[1400px] mx-auto px-2">
+          <Section id="contact" className="py-8 max-w-[1400px] mx-auto px-4">
             <h2 className="text-4xl md:text-6xl font-black mb-6 text-center text-[#0f172a] tracking-tighter">GET IN TOUCH</h2>
 
             <div className="grid lg:grid-cols-2 gap-8 items-stretch max-w-6xl mx-auto">
               <div className="flex flex-col space-y-3 w-full h-full">
-                <ContactInfoCard isBrand={true} icon="https://img.icons8.com/color/96/gmail-new.png" label="Email" value="azadm6484@gmail.com" />
-                <ContactInfoCard isBrand={true} icon="https://img.icons8.com/color/96/phone.png" label="Phone" value="+91-8383895123" />
+                <a href="mailto:azadm6484@gmail.com" className="w-full">
+                  <ContactInfoCard isBrand={true} icon="https://img.icons8.com/color/96/gmail-new.png" label="Email" value="azadm6484@gmail.com" />
+                </a>
+                <a href="tel:+91-8383895123" className="w-full">
+                  <ContactInfoCard isBrand={true} icon="https://img.icons8.com/color/96/phone.png" label="Phone" value="+91-8383895123" />
+                </a>
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=902+-+New+Hindan+Vihar,+Hazz+house+colony,+Mohan+Nagar,+201007+Ghaziabad,+India"
                   target="_blank"
@@ -698,7 +702,7 @@ const Portfolio = () => {
                 </div>
               </div>
 
-              <div className="glass-card p-8 border border-white w-full">
+              <div className="glass-card p-5 border border-white w-full">
                 <form onSubmit={handleFormSubmit} className="space-y-5">
                   <div>
                     <label className="block text-[10px] font-black text-[#64748b] mb-2 uppercase tracking-[0.2em] ml-4">Name</label>
@@ -753,7 +757,7 @@ const Portfolio = () => {
           </Section>
 
           {/* --- SECTION 10: FOOTER --- */}
-          <footer className="py-8 bg-white/40 backdrop-blur-xl text-center rounded-[32px] mx-4 my-0 border border-white shadow-xl">
+          <footer className="py-8 bg-white/40 backdrop-blur-xl text-center rounded-[32px] mx-1 md:mx-4 my-0 border border-white shadow-xl">
             <p className="text-[#64748b] mb-6 font-bold text-xs tracking-widest uppercase">Laboratory Session Ended • Azad © 2026</p>
             <div className="flex justify-center space-x-6 md:space-x-8">
               <SocialIcon icon="github" href="https://github.com/azadm6484" />
@@ -767,7 +771,7 @@ const Portfolio = () => {
       </div>
 
       {/* Mobile Bottom Navigation */}
-      <nav className="md:hidden fixed bottom-6 left-6 right-6 h-20 bg-white/70 backdrop-blur-3xl rounded-[32px] z-[100] flex items-center justify-around px-4 border border-white/50 shadow-2xl">
+      <nav className="md:hidden fixed bottom-6 left-3 right-3 h-20 bg-white/70 backdrop-blur-3xl rounded-[32px] z-[100] flex items-center justify-around px-2 border border-white/50 shadow-2xl">
         {[
           { id: 'hero', teal: 'https://img.icons8.com/ios-filled/100/0d9488/home.png', black: 'https://img.icons8.com/ios-filled/100/000000/home.png', label: 'Home' },
           { id: 'skills', teal: 'https://img.icons8.com/ios-filled/100/0d9488/brain.png', black: 'https://img.icons8.com/ios-filled/100/000000/brain.png', label: 'Skills' },
